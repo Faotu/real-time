@@ -1,8 +1,10 @@
 "use client";
 import Button from "@/app/components/Button";
+import { BsGithub, BsGoogle } from "react-icons/bs";
 import Input from "@/app/components/inputs/Input";
 import React, { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import AuthenSocialButton from "./AuthenSocialButton";
 
 type Variant = "LOGIN" | "REGISTER";
 
@@ -49,11 +51,11 @@ const AuthentPage = () => {
     // Login with Social account in the future
   };
   return (
-    <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+    <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md pt-0">
       <div className="bg-white border border-green-700 px-4 py-8 shadow sm:rounded-lg sm:px-10">
         <form className="space-y-6  " onSubmit={handleSubmit(onSubmit)}>
           {variant === "REGISTER" && (
-            <Input id="name" label="name" register={register} errors={errors} />
+            <Input id="name" label="Name" register={register} errors={errors} />
           )}
           <Input
             id="email"
@@ -61,6 +63,7 @@ const AuthentPage = () => {
             type="email"
             register={register}
             errors={errors}
+            disabled={isLoading}
           />
           <Input
             id="password"
@@ -68,6 +71,7 @@ const AuthentPage = () => {
             type="password"
             register={register}
             errors={errors}
+            disabled={isLoading}
           />
 
           <div>
@@ -88,7 +92,27 @@ const AuthentPage = () => {
             </div>
           </div>
 
-          <div className="mt-6 flex gap-2"></div>
+          <div className="mt-6 flex gap-2 text-green-500">
+            <AuthenSocialButton
+              icon={BsGithub}
+              onClick={() => scoialAction("github")}
+            />
+            <AuthenSocialButton
+              icon={BsGoogle}
+              onClick={() => scoialAction("google")}
+            />
+          </div>
+        </div>
+
+        <div className="flex gap-2 justify-center text-sm mt-6 px-2 to-gray-500">
+          <div>
+            {variant === "LOGIN"
+              ? "New to real time?"
+              : "Already have an account"}
+          </div>
+          <div onClick={toggleVariant} className="underline cursor-pointer">
+            {variant === "LOGIN" ? "Create an account" : "Login"}
+          </div>
         </div>
       </div>
     </div>
