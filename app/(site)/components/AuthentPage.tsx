@@ -51,7 +51,7 @@ const AuthentPage = () => {
     // Login with Social account in the future
   };
   return (
-    <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md pt-0">
+    <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div className="bg-white border border-green-700 px-4 py-8 shadow sm:rounded-lg sm:px-10">
         <form className="space-y-6  " onSubmit={handleSubmit(onSubmit)}>
           {variant === "REGISTER" && (
