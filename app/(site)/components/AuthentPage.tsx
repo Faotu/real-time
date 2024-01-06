@@ -5,6 +5,7 @@ import Input from "@/app/components/inputs/Input";
 import React, { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import AuthenSocialButton from "./AuthenSocialButton";
+import axios from "axios";
 
 type Variant = "LOGIN" | "REGISTER";
 
@@ -38,6 +39,8 @@ const AuthentPage = () => {
 
     if (variant === "REGISTER") {
       // Register with axios in the future
+
+      axios.post("/api/register", data);
     }
 
     if (variant === "LOGIN") {
